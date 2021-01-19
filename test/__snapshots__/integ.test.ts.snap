@@ -1,0 +1,586 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integ snapshot validation 1`] = `
+Object {
+  "Resources": Object {
+    "ClusterASG2DD591B2": Object {
+      "Properties": Object {
+        "LaunchConfigurationName": Object {
+          "Ref": "ClusterASGLaunchConfig16ACA027",
+        },
+        "MaxSize": "1",
+        "MinSize": "1",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "PropagateAtLaunch": true,
+            "Value": "eksdistro-stack/Cluster/ASG",
+          },
+        ],
+        "VPCZoneIdentifier": Array [
+          Object {
+            "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
+          },
+          Object {
+            "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
+          },
+          Object {
+            "Ref": "ClusterVpcPrivateSubnet3Subnet2479B8E0",
+          },
+        ],
+      },
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "UpdatePolicy": Object {
+        "AutoScalingScheduledAction": Object {
+          "IgnoreUnmodifiedGroupSizeProperties": true,
+        },
+      },
+    },
+    "ClusterASGInstanceProfile81F4B120": Object {
+      "Properties": Object {
+        "Roles": Array [
+          Object {
+            "Ref": "ClusterASGInstanceRoleD98919B1",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+    "ClusterASGInstanceRoleD98919B1": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "ec2.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AmazonSSMManagedInstanceCore",
+              ],
+            ],
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/ASG",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ClusterASGInstanceSecurityGroup9F102C74": Object {
+      "Properties": Object {
+        "GroupDescription": "eksdistro-stack/Cluster/ASG/InstanceSecurityGroup",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/ASG",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "ClusterASGLaunchConfig16ACA027": Object {
+      "DependsOn": Array [
+        "ClusterASGInstanceRoleD98919B1",
+      ],
+      "Properties": Object {
+        "IamInstanceProfile": Object {
+          "Ref": "ClusterASGInstanceProfile81F4B120",
+        },
+        "ImageId": "ami-1234",
+        "InstanceType": "t3.large",
+        "SecurityGroups": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "ClusterASGInstanceSecurityGroup9F102C74",
+              "GroupId",
+            ],
+          },
+        ],
+        "UserData": Object {
+          "Fn::Base64": "#!/bin/bash
+set -o xtrace
+snap install eks --classic --edge",
+        },
+      },
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+    },
+    "ClusterVpcFAA3CEDF": Object {
+      "Properties": Object {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "ClusterVpcIGW1E358A6E": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "ClusterVpcPrivateSubnet1DefaultRoute3B4D40DD": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "ClusterVpcPublicSubnet1NATGateway0693C346",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPrivateSubnet1RouteTable5AAEDA3F",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterVpcPrivateSubnet1RouteTable5AAEDA3F": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterVpcPrivateSubnet1RouteTableAssociation9B8A88D9": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPrivateSubnet1RouteTable5AAEDA3F",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPrivateSubnet1SubnetA4EB481A",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterVpcPrivateSubnet1SubnetA4EB481A": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.96.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PrivateSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterVpcPrivateSubnet2DefaultRoute011666AF": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "ClusterVpcPublicSubnet1NATGateway0693C346",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPrivateSubnet2RouteTable73064A66",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterVpcPrivateSubnet2RouteTable73064A66": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterVpcPrivateSubnet2RouteTableAssociationFB21349E": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPrivateSubnet2RouteTable73064A66",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPrivateSubnet2SubnetBD1ECB6E",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterVpcPrivateSubnet2SubnetBD1ECB6E": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.128.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterVpcPrivateSubnet3DefaultRoute90E9BC37": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "ClusterVpcPublicSubnet1NATGateway0693C346",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPrivateSubnet3RouteTable941ABA3E",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterVpcPrivateSubnet3RouteTable941ABA3E": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PrivateSubnet3",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterVpcPrivateSubnet3RouteTableAssociationB0D482EA": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPrivateSubnet3RouteTable941ABA3E",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPrivateSubnet3Subnet2479B8E0",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterVpcPrivateSubnet3Subnet2479B8E0": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1c",
+        "CidrBlock": "10.0.160.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PrivateSubnet3",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterVpcPublicSubnet1DefaultRoute62DA4B4B": Object {
+      "DependsOn": Array [
+        "ClusterVpcVPCGW47AC17E9",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "ClusterVpcIGW1E358A6E",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPublicSubnet1RouteTable5594A636",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterVpcPublicSubnet1EIP433C56EE": Object {
+      "Properties": Object {
+        "Domain": "vpc",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::EIP",
+    },
+    "ClusterVpcPublicSubnet1NATGateway0693C346": Object {
+      "Properties": Object {
+        "AllocationId": Object {
+          "Fn::GetAtt": Array [
+            "ClusterVpcPublicSubnet1EIP433C56EE",
+            "AllocationId",
+          ],
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPublicSubnet1SubnetA9F7E0A5",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet1",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::NatGateway",
+    },
+    "ClusterVpcPublicSubnet1RouteTable5594A636": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterVpcPublicSubnet1RouteTableAssociation0FBEF1F4": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPublicSubnet1RouteTable5594A636",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPublicSubnet1SubnetA9F7E0A5",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterVpcPublicSubnet1SubnetA9F7E0A5": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.0.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterVpcPublicSubnet2DefaultRoute97446C8A": Object {
+      "DependsOn": Array [
+        "ClusterVpcVPCGW47AC17E9",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "ClusterVpcIGW1E358A6E",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPublicSubnet2RouteTable7B43F18C",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterVpcPublicSubnet2RouteTable7B43F18C": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterVpcPublicSubnet2RouteTableAssociation8446B27D": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPublicSubnet2RouteTable7B43F18C",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPublicSubnet2Subnet059113C4",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterVpcPublicSubnet2Subnet059113C4": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.32.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterVpcPublicSubnet3DefaultRoute772CA282": Object {
+      "DependsOn": Array [
+        "ClusterVpcVPCGW47AC17E9",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "ClusterVpcIGW1E358A6E",
+        },
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPublicSubnet3RouteTable6810F4F3",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "ClusterVpcPublicSubnet3RouteTable6810F4F3": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet3",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "ClusterVpcPublicSubnet3RouteTableAssociationD919DEF1": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "ClusterVpcPublicSubnet3RouteTable6810F4F3",
+        },
+        "SubnetId": Object {
+          "Ref": "ClusterVpcPublicSubnet3Subnet3AB4E59C",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "ClusterVpcPublicSubnet3Subnet3AB4E59C": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1c",
+        "CidrBlock": "10.0.64.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "eksdistro-stack/Cluster/Vpc/PublicSubnet3",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "ClusterVpcVPCGW47AC17E9": Object {
+      "Properties": Object {
+        "InternetGatewayId": Object {
+          "Ref": "ClusterVpcIGW1E358A6E",
+        },
+        "VpcId": Object {
+          "Ref": "ClusterVpcFAA3CEDF",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+  },
+}
+`;
