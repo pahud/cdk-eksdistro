@@ -38,6 +38,7 @@ new Cluster(scope: Construct, id: string, props?: ClusterProps)
   * **capacitySize** (<code>number</code>)  number of instances. __*Default*__: 1
   * **defaultInstanceType** (<code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code>)  The default EC2 instance type. __*Default*__: t3.large
   * **machineImage** (<code>[IMachineImage](#aws-cdk-aws-ec2-imachineimage)</code>)  AMI for the EKS-D instance node. __*Default*__: The latest AMI from ubuntu-focal-20.04-amd64-server
+  * **outputAmiId** (<code>boolean</code>)  Print AMI ID in the output. __*Default*__: true
   * **vpc** (<code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code>)  VPC for the cluster. __*Default*__: get or create a VPC
 
 
@@ -54,9 +55,10 @@ The AMI provider to get the latest Ubuntu Linux AMI.
 
 
 ```ts
-new UbumtuAmiProvider(userData: UserData)
+new UbumtuAmiProvider(scope: Construct, userData: UserData)
 ```
 
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **userData** (<code>[UserData](#aws-cdk-aws-ec2-userdata)</code>)  *No description*
 
 
@@ -67,6 +69,7 @@ new UbumtuAmiProvider(userData: UserData)
 Name | Type | Description 
 -----|------|-------------
 **amiId** | <code>[IMachineImage](#aws-cdk-aws-ec2-imachineimage)</code> | <span></span>
+**scope** | <code>[Construct](#aws-cdk-core-construct)</code> | <span></span>
 **userData** | <code>[UserData](#aws-cdk-aws-ec2-userdata)</code> | <span></span>
 
 
@@ -83,6 +86,7 @@ Name | Type | Description
 **capacitySize**? | <code>number</code> | number of instances.<br/>__*Default*__: 1
 **defaultInstanceType**? | <code>[InstanceType](#aws-cdk-aws-ec2-instancetype)</code> | The default EC2 instance type.<br/>__*Default*__: t3.large
 **machineImage**? | <code>[IMachineImage](#aws-cdk-aws-ec2-imachineimage)</code> | AMI for the EKS-D instance node.<br/>__*Default*__: The latest AMI from ubuntu-focal-20.04-amd64-server
+**outputAmiId**? | <code>boolean</code> | Print AMI ID in the output.<br/>__*Default*__: true
 **vpc**? | <code>[IVpc](#aws-cdk-aws-ec2-ivpc)</code> | VPC for the cluster.<br/>__*Default*__: get or create a VPC
 
 

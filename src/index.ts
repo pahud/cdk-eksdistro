@@ -31,6 +31,13 @@ export interface ClusterProps {
    * @default - The latest AMI from ubuntu-focal-20.04-amd64-server
    */
   readonly machineImage?: ec2.IMachineImage;
+
+  /**
+   * Print AMI ID in the output
+   *
+   * @default - true
+   */
+  readonly outputAmiId?: boolean;
 }
 
 /**
@@ -50,11 +57,15 @@ export class Cluster extends cdk.Construct {
     );
     const asg = new autoscaling.AutoScalingGroup(this, 'ASG', {
       instanceType: props.defaultInstanceType ?? this.defaultInstanceType,
-      machineImage: props.machineImage ?? new UbumtuAmiProvider(userData).amiId,
+      machineImage: props.machineImage ?? new UbumtuAmiProvider(this, userData).amiId,
       minCapacity: props.capacitySize ?? this.defaultCapacitySize,
       vpc,
     });
     asg.role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore'));
+
+    if (props.outputAmiId !== false) {
+      new cdk.CfnOutput(this, 'AmiId', { value: new UbumtuAmiProvider(this, userData).amiId.getImage(this).imageId });
+    }
   }
 }
 
@@ -71,16 +82,26 @@ function getOrCreateVpc(scope: cdk.Construct): ec2.IVpc {
  * The AMI provider to get the latest Ubuntu Linux AMI
  */
 export class UbumtuAmiProvider {
-  constructor(readonly userData: ec2.UserData) {}
+  constructor(readonly scope: cdk.Construct, readonly userData: ec2.UserData) {}
   public get amiId() {
+    const stack = cdk.Stack.of(this.scope);
+    const filterName = isChina(stack) ? 'ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-????????'
+      : 'ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-????????';
+    const owners = isChina(stack) ? '837727238323' : '099720109477';
     return ec2.MachineImage.lookup({
       name: 'Ubuntu',
       filters: {
-        name: ['ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-????????'],
+        name: [filterName],
         state: ['available'],
       },
-      owners: ['099720109477'],
+      owners: [owners],
       userData: this.userData,
     });
   }
 }
+
+function isChina(stack: cdk.Stack) {
+  return !cdk.Token.isUnresolved(stack.region) && stack.region.startsWith('cn-');
+}
+
+

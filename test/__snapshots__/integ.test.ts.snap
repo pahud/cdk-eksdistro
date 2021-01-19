@@ -2,6 +2,11 @@
 
 exports[`integ snapshot validation 1`] = `
 Object {
+  "Outputs": Object {
+    "ClusterAmiId375DE810": Object {
+      "Value": "ami-1234",
+    },
+  },
   "Resources": Object {
     "ClusterASG2DD591B2": Object {
       "Properties": Object {
