@@ -16,6 +16,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-autoscaling',
   ],
   dependabot: false,
+  releaseBranches: ['main'],
   publishToPypi: {
     distName: 'cdk-eksdistro',
     module: 'cdk_eksdistro',
