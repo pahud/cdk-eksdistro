@@ -3,10 +3,27 @@ import * as ec2 from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as cdk from '@aws-cdk/core';
 
-
+/**
+ * Construct properties for the EKS-D cluster
+ */
 export interface ClusterProps {
+  /**
+   * VPC for the cluster
+   *
+   * @default - get or create a VPC
+   */
   readonly vpc?: ec2.IVpc;
+  /**
+   * The default EC2 instance type
+   *
+   * @default t3.large
+   */
   readonly defaultInstanceType?: ec2.InstanceType;
+  /**
+   * number of instances
+   *
+   * @default 1
+   */
   readonly capacitySize?: number;
   /**
    * AMI for the EKS-D instance node
@@ -16,6 +33,9 @@ export interface ClusterProps {
   readonly machineImage?: ec2.IMachineImage;
 }
 
+/**
+ * Represents the EKS-D cluster
+ */
 export class Cluster extends cdk.Construct {
   private readonly defaultInstanceType: ec2.InstanceType = new ec2.InstanceType('t3.large');
   private readonly defaultCapacitySize: number = 1;
