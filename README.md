@@ -1,3 +1,7 @@
+[![NPM version](https://badge.fury.io/js/cdk-eksdistro.svg)](https://badge.fury.io/js/cdk-eksdistro)
+[![PyPI version](https://badge.fury.io/py/cdk-eksdistro.svg)](https://badge.fury.io/py/cdk-eksdistro)
+![Release](https://github.com/pahud/cdk-eksdistro/workflows/Release/badge.svg)
+
 # `cdk-eksdistro`
 
 CDK construct library that allows you to create [Amazon EKS Distro](https://distro.eks.amazonaws.com/) on Amaozn EC2 instance(s).
