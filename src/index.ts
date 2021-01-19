@@ -34,7 +34,7 @@ export interface ClusterProps {
 
   /**
    * Print AMI ID in the output
-   * 
+   *
    * @default - true
    */
   readonly outputAmiId?: boolean;
@@ -63,8 +63,8 @@ export class Cluster extends cdk.Construct {
     });
     asg.role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore'));
 
-    if(props.outputAmiId !== false) {
-      new cdk.CfnOutput(this, 'AmiId', { value: new UbumtuAmiProvider(this, userData).amiId.getImage(this).imageId })
+    if (props.outputAmiId !== false) {
+      new cdk.CfnOutput(this, 'AmiId', { value: new UbumtuAmiProvider(this, userData).amiId.getImage(this).imageId });
     }
   }
 }
@@ -84,10 +84,10 @@ function getOrCreateVpc(scope: cdk.Construct): ec2.IVpc {
 export class UbumtuAmiProvider {
   constructor(readonly scope: cdk.Construct, readonly userData: ec2.UserData) {}
   public get amiId() {
-    const stack = cdk.Stack.of(this.scope)
+    const stack = cdk.Stack.of(this.scope);
     const filterName = isChina(stack) ? 'ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-????????'
-      : 'ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-????????'
-    const owners = isChina(stack) ? '837727238323' : '099720109477'
+      : 'ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-????????';
+    const owners = isChina(stack) ? '837727238323' : '099720109477';
     return ec2.MachineImage.lookup({
       name: 'Ubuntu',
       filters: {
@@ -101,7 +101,7 @@ export class UbumtuAmiProvider {
 }
 
 function isChina(stack: cdk.Stack) {
-  return !cdk.Token.isUnresolved(stack.region) && stack.region.startsWith('cn-')
+  return !cdk.Token.isUnresolved(stack.region) && stack.region.startsWith('cn-');
 }
 
 
