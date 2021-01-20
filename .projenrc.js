@@ -15,6 +15,12 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-autoscaling',
   ],
+  deps: [
+    'cdk-ec2spot',
+  ],
+  peerDeps: [
+    'cdk-ec2spot',
+  ],
   dependabot: false,
   releaseBranches: ['main'],
   publishToPypi: {

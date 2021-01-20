@@ -42,7 +42,7 @@
     "@aws-cdk/core" "1.85.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-autoscaling@^1.85.0":
+"@aws-cdk/aws-autoscaling@^1.73.0", "@aws-cdk/aws-autoscaling@^1.85.0":
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-autoscaling/-/aws-autoscaling-1.85.0.tgz#2a8656ef780434eb315bf57a4f83feda40b08f81"
   integrity sha512-J8uY/mDjGf9eKngKzYCoPmd/mehF8/ZjW4Qzq8pbKWShYHsrG8XlQXvndndSc7n2yICbel+HoO6+zSowKH7YBQ==
@@ -99,7 +99,7 @@
     "@aws-cdk/core" "1.85.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-ec2@1.85.0", "@aws-cdk/aws-ec2@^1.85.0":
+"@aws-cdk/aws-ec2@1.85.0", "@aws-cdk/aws-ec2@^1.73.0", "@aws-cdk/aws-ec2@^1.85.0":
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-ec2/-/aws-ec2-1.85.0.tgz#40af637c29f18df020815a8d5167dde555c6cdd5"
   integrity sha512-IHbIwsB3lFKMRT48hZBwD+5qaCkLbVTIvX83KMjvsUDAVLWdDl8UReo5P9dfE2dNdOAWf132v5Z3KbbYtU32vg==
@@ -188,7 +188,7 @@
     "@aws-cdk/core" "1.85.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-iam@1.85.0", "@aws-cdk/aws-iam@^1.85.0":
+"@aws-cdk/aws-iam@1.85.0", "@aws-cdk/aws-iam@^1.73.0", "@aws-cdk/aws-iam@^1.85.0":
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.85.0.tgz#d32132159605e9476840944466289768b9857470"
   integrity sha512-8ToYOfs4ATDHq96LzpSX8+HHZ8cvr3TBI4BS2an1wiNlYFeF857qV3Jwxn9pG3n6b6/vG7XpHqQQbqFdWETNzQ==
@@ -341,7 +341,7 @@
     string-width "^4.2.0"
     table "^6.0.7"
 
-"@aws-cdk/core@1.85.0", "@aws-cdk/core@^1.85.0":
+"@aws-cdk/core@1.85.0", "@aws-cdk/core@^1.73.0", "@aws-cdk/core@^1.85.0":
   version "1.85.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.85.0.tgz#22fe776c51ff637ce909a933fa7c2d16e6384b68"
   integrity sha512-L8fiMg4Dpe8qhV+dClBSQldLt0LBEyz7EOigL3YEi+yMxQ2dBZAeryroh609Cnn/WlzNPob795FWmvMqTbrdAw==
@@ -1607,6 +1607,16 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
+
+cdk-ec2spot@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/cdk-ec2spot/-/cdk-ec2spot-0.0.2.tgz#a6bc38c951751ed4ac1e0be2150f85c6a2596062"
+  integrity sha512-SbwQtZVz59443Mwn/GUybxZiZwa9SQJyOBV53N/yvFNBHbZ2eloYYb/wwD8J165ZCBLqM7gA2uuaHMfDwhAo4w==
+  dependencies:
+    "@aws-cdk/aws-autoscaling" "^1.73.0"
+    "@aws-cdk/aws-ec2" "^1.73.0"
+    "@aws-cdk/aws-iam" "^1.73.0"
+    "@aws-cdk/core" "^1.73.0"
 
 chalk@^2.0.0, chalk@^2.4.2:
   version "2.4.2"
