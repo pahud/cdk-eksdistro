@@ -14,15 +14,15 @@ Object {
     },
   },
   "Resources": Object {
-    "ClusterASG2DD591B2": Object {
+    "ClusterASGProviderASGC7BB1644": Object {
       "Properties": Object {
         "LaunchTemplate": Object {
           "LaunchTemplateId": Object {
-            "Ref": "ClusterLaunchTemplateASG7A255B1C",
+            "Ref": "ClusterASGProviderLaunchTemplateASG6166634B",
           },
           "Version": Object {
             "Fn::GetAtt": Array [
-              "ClusterLaunchTemplateASG7A255B1C",
+              "ClusterASGProviderLaunchTemplateASG6166634B",
               "LatestVersionNumber",
             ],
           },
@@ -33,7 +33,7 @@ Object {
           Object {
             "Key": "Name",
             "PropagateAtLaunch": true,
-            "Value": "eksdistro-stack/Cluster/ASG",
+            "Value": "eksdistro-stack/Cluster/ASGProvider/ASG",
           },
         ],
         "VPCZoneIdentifier": Array [
@@ -50,22 +50,25 @@ Object {
       },
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "UpdatePolicy": Object {
+        "AutoScalingReplacingUpdate": Object {
+          "WillReplace": true,
+        },
         "AutoScalingScheduledAction": Object {
           "IgnoreUnmodifiedGroupSizeProperties": true,
         },
       },
     },
-    "ClusterASGInstanceProfile81F4B120": Object {
+    "ClusterASGProviderASGInstanceProfile0E263085": Object {
       "Properties": Object {
         "Roles": Array [
           Object {
-            "Ref": "ClusterASGInstanceRoleD98919B1",
+            "Ref": "ClusterASGProviderASGInstanceRole90ACC5E0",
           },
         ],
       },
       "Type": "AWS::IAM::InstanceProfile",
     },
-    "ClusterASGInstanceRoleD98919B1": Object {
+    "ClusterASGProviderASGInstanceRole90ACC5E0": Object {
       "Properties": Object {
         "AssumeRolePolicyDocument": Object {
           "Statement": Array [
@@ -96,15 +99,15 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "eksdistro-stack/Cluster/ASG",
+            "Value": "eksdistro-stack/Cluster/ASGProvider/ASG",
           },
         ],
       },
       "Type": "AWS::IAM::Role",
     },
-    "ClusterASGInstanceSecurityGroup9F102C74": Object {
+    "ClusterASGProviderASGInstanceSecurityGroupA11BF2A0": Object {
       "Properties": Object {
-        "GroupDescription": "eksdistro-stack/Cluster/ASG/InstanceSecurityGroup",
+        "GroupDescription": "eksdistro-stack/Cluster/ASGProvider/ASG/InstanceSecurityGroup",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -115,7 +118,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "eksdistro-stack/Cluster/ASG",
+            "Value": "eksdistro-stack/Cluster/ASGProvider/ASG",
           },
         ],
         "VpcId": Object {
@@ -124,13 +127,13 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
-    "ClusterASGLaunchConfig16ACA027": Object {
+    "ClusterASGProviderASGLaunchConfig08F0293D": Object {
       "DependsOn": Array [
-        "ClusterASGInstanceRoleD98919B1",
+        "ClusterASGProviderASGInstanceRole90ACC5E0",
       ],
       "Properties": Object {
         "IamInstanceProfile": Object {
-          "Ref": "ClusterASGInstanceProfile81F4B120",
+          "Ref": "ClusterASGProviderASGInstanceProfile0E263085",
         },
         "ImageId": Object {
           "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
@@ -139,7 +142,7 @@ Object {
         "SecurityGroups": Array [
           Object {
             "Fn::GetAtt": Array [
-              "ClusterASGInstanceSecurityGroup9F102C74",
+              "ClusterASGProviderASGInstanceSecurityGroupA11BF2A0",
               "GroupId",
             ],
           },
@@ -150,13 +153,13 @@ Object {
       },
       "Type": "AWS::AutoScaling::LaunchConfiguration",
     },
-    "ClusterLaunchTemplateASG7A255B1C": Object {
+    "ClusterASGProviderLaunchTemplateASG6166634B": Object {
       "Properties": Object {
         "LaunchTemplateData": Object {
           "IamInstanceProfile": Object {
             "Arn": Object {
               "Fn::GetAtt": Array [
-                "ClusterASGInstanceProfile81F4B120",
+                "ClusterASGProviderASGInstanceProfile0E263085",
                 "Arn",
               ],
             },
