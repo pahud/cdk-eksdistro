@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/pahud/cdk-eksdistro/compare/v0.0.6...v0.0.7) (2021-01-20)
+
+
+### Features
+
+* spot support ([#6](https://github.com/pahud/cdk-eksdistro/issues/6)) ([af15837](https://github.com/pahud/cdk-eksdistro/commit/af158371a41f12580eefd2d115642928ed39bf3d)), closes [#4](https://github.com/pahud/cdk-eksdistro/issues/4)
+
 ### [0.0.6](https://github.com/pahud/cdk-eksdistro/compare/v0.0.5...v0.0.6) (2021-01-20)
 
 ### [0.0.5](https://github.com/pahud/cdk-eksdistro/compare/v0.0.4...v0.0.5) (2021-01-20)
