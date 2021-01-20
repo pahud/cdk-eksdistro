@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/pahud/cdk-eksdistro/compare/v0.0.7...v0.0.8) (2021-01-20)
+
+
+### Features
+
+* use cdk-ec2spot to generate AutoScaling Group ([#9](https://github.com/pahud/cdk-eksdistro/issues/9)) ([0ee178a](https://github.com/pahud/cdk-eksdistro/commit/0ee178afd45af75e3a1f71ed4aaf2677429bbdbc)), closes [#8](https://github.com/pahud/cdk-eksdistro/issues/8)
+
 ### [0.0.7](https://github.com/pahud/cdk-eksdistro/compare/v0.0.6...v0.0.7) (2021-01-20)
 
 
