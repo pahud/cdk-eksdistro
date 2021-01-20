@@ -27,6 +27,14 @@ const stack = new cdk.Stack(app, 'eksdistro-stack', { env });
 new Cluster(stack, 'Cluster');
 ```
 
+## Spot Instance
+
+To create Amazon EC2 Spot instance instead of on-demand, use the `spot` property:
+
+```ts
+new Cluster(stack, 'Cluster', { spot: true });
+```
+
 # Validate the cluster
 
 By default, the `Cluster` construct creates a single-node EKS-D cluster on AWS EC2 with the latest Ubuntu Linux LTS AMI. To validate the cluster, open the EC2 console, select the instance and click the **Connect** button and select **session manager**.

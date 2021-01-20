@@ -7,11 +7,25 @@ Object {
       "Value": "ami-1234",
     },
   },
+  "Parameters": Object {
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2",
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+    },
+  },
   "Resources": Object {
     "ClusterASG2DD591B2": Object {
       "Properties": Object {
-        "LaunchConfigurationName": Object {
-          "Ref": "ClusterASGLaunchConfig16ACA027",
+        "LaunchTemplate": Object {
+          "LaunchTemplateId": Object {
+            "Ref": "ClusterLaunchTemplateASG7A255B1C",
+          },
+          "Version": Object {
+            "Fn::GetAtt": Array [
+              "ClusterLaunchTemplateASG7A255B1C",
+              "LatestVersionNumber",
+            ],
+          },
         },
         "MaxSize": "1",
         "MinSize": "1",
@@ -118,7 +132,9 @@ Object {
         "IamInstanceProfile": Object {
           "Ref": "ClusterASGInstanceProfile81F4B120",
         },
-        "ImageId": "ami-1234",
+        "ImageId": Object {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+        },
         "InstanceType": "t3.large",
         "SecurityGroups": Array [
           Object {
@@ -129,12 +145,38 @@ Object {
           },
         ],
         "UserData": Object {
-          "Fn::Base64": "#!/bin/bash
-set -o xtrace
-snap install eks --classic --edge",
+          "Fn::Base64": "#!/bin/bash",
         },
       },
       "Type": "AWS::AutoScaling::LaunchConfiguration",
+    },
+    "ClusterLaunchTemplateASG7A255B1C": Object {
+      "Properties": Object {
+        "LaunchTemplateData": Object {
+          "IamInstanceProfile": Object {
+            "Arn": Object {
+              "Fn::GetAtt": Array [
+                "ClusterASGInstanceProfile81F4B120",
+                "Arn",
+              ],
+            },
+          },
+          "ImageId": "ami-1234",
+          "InstanceMarketOptions": Object {
+            "MarketType": "spot",
+            "SpotOptions": Object {
+              "SpotInstanceType": "one-time",
+            },
+          },
+          "InstanceType": "t3.large",
+          "UserData": Object {
+            "Fn::Base64": "#!/bin/bash
+set -o xtrace
+snap install eks --classic --edge",
+          },
+        },
+      },
+      "Type": "AWS::EC2::LaunchTemplate",
     },
     "ClusterVpcFAA3CEDF": Object {
       "Properties": Object {
