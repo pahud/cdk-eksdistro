@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/pahud/cdk-eksdistro/compare/v0.0.4...v0.0.5) (2021-01-20)
+
+
+### Features
+
+* support china regions ([3493cb8](https://github.com/pahud/cdk-eksdistro/commit/3493cb8795133d6ecfc4ef6a4bb2a37c559518de))
+
 ### [0.0.4](https://github.com/pahud/cdk-eksdistro/compare/v0.0.3...v0.0.4) (2021-01-19)
 
 
