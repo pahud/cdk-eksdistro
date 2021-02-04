@@ -23,6 +23,7 @@ const project = new AwsCdkConstructLibrary({
   ],
   dependabot: false,
   releaseBranches: ['main'],
+  defaultReleaseBranch: ['main'],
   publishToPypi: {
     distName: 'cdk-eksdistro',
     module: 'cdk_eksdistro',
