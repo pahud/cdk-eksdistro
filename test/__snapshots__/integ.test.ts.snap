@@ -7,12 +7,6 @@ Object {
       "Value": "ami-1234",
     },
   },
-  "Parameters": Object {
-    "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
-      "Default": "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2",
-      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
-    },
-  },
   "Resources": Object {
     "ClusterASGProviderASGC7BB1644": Object {
       "Properties": Object {
@@ -135,9 +129,7 @@ Object {
         "IamInstanceProfile": Object {
           "Ref": "ClusterASGProviderASGInstanceProfile0E263085",
         },
-        "ImageId": Object {
-          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
-        },
+        "ImageId": "{{resolve:ssm:/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2}}",
         "InstanceType": "t3.large",
         "SecurityGroups": Array [
           Object {
