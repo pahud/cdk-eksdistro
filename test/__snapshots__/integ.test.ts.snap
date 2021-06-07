@@ -172,6 +172,17 @@ Object {
             },
           },
           "InstanceType": "t3.large",
+          "TagSpecifications": Array [
+            Object {
+              "ResourceType": "instance",
+              "Tags": Array [
+                Object {
+                  "Key": "Name",
+                  "Value": "eksdistro-stack/Cluster/ASGProvider/LaunchTemplateASG",
+                },
+              ],
+            },
+          ],
           "UserData": Object {
             "Fn::Base64": "#!/bin/bash
 set -o xtrace
