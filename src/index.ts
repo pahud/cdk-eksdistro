@@ -88,6 +88,11 @@ export class Cluster extends cdk.Construct {
     const asg = provider.createAutoScalingGroup(id, options);
     return asg;
   }
+  // private _createSpotFleet(id: string, options: ec2spot.AutoScalingGroupOptions): autoscaling.AutoScalingGroup {
+  //   const provider = new ec2spot.Provider(this, 'ASGProvider');
+  //   const asg = provider.crea(id, options);
+  //   return asg;
+  // }
 }
 
 function getOrCreateVpc(scope: cdk.Construct): ec2.IVpc {
