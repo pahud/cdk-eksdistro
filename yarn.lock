@@ -1853,9 +1853,9 @@ cdk-ec2spot@^0.0.53:
     cdk-spot-one "^0.6.166"
 
 cdk-spot-one@^0.6.166:
-  version "0.6.182"
-  resolved "https://registry.yarnpkg.com/cdk-spot-one/-/cdk-spot-one-0.6.182.tgz#f90dc0b353f4dfe0c98aa8a55aa87d568eb5ce39"
-  integrity sha512-3sn2bk0dNrT7mO83pV7HRXgVsJuoS2MY3ly1nxBmxscrmre3R7SR3/jj4ONbWiY9tT+eXe7lszmU906HeOzWTg==
+  version "0.6.183"
+  resolved "https://registry.yarnpkg.com/cdk-spot-one/-/cdk-spot-one-0.6.183.tgz#01787693a6623ffbbbac229fab3342edc2733c48"
+  integrity sha512-SlExwtfnZqKYboBcX/HvVzlXyPL27wh+3q+JzrH+mt1NYSLsmKxEBXVNVhCtgxTT3qbDEJATk574BT48hTB3Ow==
   dependencies:
     "@aws-cdk/aws-ec2" "^1.77.0"
     "@aws-cdk/aws-iam" "^1.77.0"
@@ -7712,9 +7712,9 @@ yaml@^1.10.2:
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
 yargs-parser@20.x, yargs-parser@^20.2.2, yargs-parser@^20.2.3:
-  version "20.2.7"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.7.tgz#61df85c113edfb5a7a4e36eb8aa60ef423cbc90a"
-  integrity sha512-FiNkvbeHzB/syOjIUxFDCnhSfzAL8R5vs40MgLFBorXACCOAEaWu0gRZl14vG8MR9AOJIZbmkjhusqBYZ3HTHw==
+  version "20.2.9"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
+  integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
 yargs-parser@^18.1.2:
   version "18.1.3"
