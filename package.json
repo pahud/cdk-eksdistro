@@ -45,7 +45,7 @@
     "jest-junit": "^12",
     "jsii": "^1.30.0",
     "jsii-diff": "^1.30.0",
-    "jsii-docgen": "^1.8.108",
+    "jsii-docgen": "^1.8.109",
     "jsii-pacmak": "^1.30.0",
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
@@ -59,7 +59,7 @@
     "@aws-cdk/aws-ec2": "^1.85.0",
     "@aws-cdk/aws-iam": "^1.85.0",
     "@aws-cdk/core": "^1.85.0",
-    "cdk-ec2spot": "^0.0.59",
+    "cdk-ec2spot": "^0.0.60",
     "constructs": "^3.2.27"
   },
   "dependencies": {
@@ -67,7 +67,7 @@
     "@aws-cdk/aws-ec2": "^1.85.0",
     "@aws-cdk/aws-iam": "^1.85.0",
     "@aws-cdk/core": "^1.85.0",
-    "cdk-ec2spot": "^0.0.59"
+    "cdk-ec2spot": "^0.0.60"
   },
   "bundledDependencies": [],
   "keywords": [
