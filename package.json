@@ -59,7 +59,7 @@
     "@aws-cdk/aws-ec2": "^1.85.0",
     "@aws-cdk/aws-iam": "^1.85.0",
     "@aws-cdk/core": "^1.85.0",
-    "cdk-ec2spot": "^0.0.63",
+    "cdk-ec2spot": "^0.0.64",
     "constructs": "^3.2.27"
   },
   "dependencies": {
@@ -67,7 +67,7 @@
     "@aws-cdk/aws-ec2": "^1.85.0",
     "@aws-cdk/aws-iam": "^1.85.0",
     "@aws-cdk/core": "^1.85.0",
-    "cdk-ec2spot": "^0.0.63"
+    "cdk-ec2spot": "^0.0.64"
   },
   "bundledDependencies": [],
   "keywords": [
