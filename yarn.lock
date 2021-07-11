@@ -1837,10 +1837,10 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cdk-ec2spot@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/cdk-ec2spot/-/cdk-ec2spot-0.1.4.tgz#b6638128a3bd61f3a8f5179f0183980823cd5e9e"
-  integrity sha512-ZFp1mrjdZ2henjHTATCtVpVeqOZY44gIvD5834V01VwOJfmpw7Z9BluSevW35bOH8dYvfTMJ3LlMBSO0MJ3fVw==
+cdk-ec2spot@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/cdk-ec2spot/-/cdk-ec2spot-0.1.5.tgz#1badceffe4f35b4c8a3d1b4c0d70e4b0fc0e0c7b"
+  integrity sha512-g9W/hIQUoG+I+eGk0P3zu/5ICS8XQtGfdERZK/CDChht7wrqFihwvKMNCl9pwjsAhwRzqJrM/mVdTZEj/FXv1A==
   dependencies:
     "@aws-cdk/aws-autoscaling" "^1.73.0"
     "@aws-cdk/aws-ec2" "^1.73.0"
@@ -1849,9 +1849,9 @@ cdk-ec2spot@^0.1.4:
     cdk-spot-one "^0.6.202"
 
 cdk-spot-one@^0.6.202:
-  version "0.6.202"
-  resolved "https://registry.yarnpkg.com/cdk-spot-one/-/cdk-spot-one-0.6.202.tgz#d3bec64ce3eb4402672e1292088601630041e565"
-  integrity sha512-tiolx5ApYpVPi0FpcShxOHyOFF6raPkT2R/49a72lzqZk9tUY6p5hPnYLEk7gNaxfhcHj73YhzqWDWb6n1Y6+w==
+  version "0.6.204"
+  resolved "https://registry.yarnpkg.com/cdk-spot-one/-/cdk-spot-one-0.6.204.tgz#a4e1f0cc5832f1b8d5adeb1c41a085d29e805b28"
+  integrity sha512-opPrEx1KhLj7t4Y4+0yBE4LE4JCx4jt9GInUenu/i/nMVmZ9lYR2RthB1Y8sYbt4hf/SHGT7gBRqW1QOodW8YA==
   dependencies:
     "@aws-cdk/aws-ec2" "^1.77.0"
     "@aws-cdk/aws-iam" "^1.77.0"
@@ -7490,9 +7490,9 @@ write-file-atomic@^3.0.0:
     typedarray-to-buffer "^3.1.5"
 
 ws@^7.4.5:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.2.tgz#09cc8fea3bec1bc5ed44ef51b42f945be36900f6"
-  integrity sha512-lkF7AWRicoB9mAgjeKbGqVUekLnSNO4VjKVnuPHpQeOxZOErX6BPXwJk70nFslRCEEA8EVW7ZjKwXaP9N+1sKQ==
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.3.tgz#160835b63c7d97bfab418fc1b8a9fced2ac01a74"
+  integrity sha512-kQ/dHIzuLrS6Je9+uv81ueZomEwH0qVYstcAQ4/Z93K8zeko9gtAbttJWzoC5ukqXY1PpoouV3+VSOqEAFt5wg==
 
 xdg-basedir@^4.0.0:
   version "4.0.0"
