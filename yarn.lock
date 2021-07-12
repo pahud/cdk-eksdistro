@@ -1837,21 +1837,21 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cdk-ec2spot@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/cdk-ec2spot/-/cdk-ec2spot-0.1.5.tgz#1badceffe4f35b4c8a3d1b4c0d70e4b0fc0e0c7b"
-  integrity sha512-g9W/hIQUoG+I+eGk0P3zu/5ICS8XQtGfdERZK/CDChht7wrqFihwvKMNCl9pwjsAhwRzqJrM/mVdTZEj/FXv1A==
+cdk-ec2spot@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/cdk-ec2spot/-/cdk-ec2spot-0.1.6.tgz#9cb442a9496c65f527b4fe58e6148b95ca0c0a8b"
+  integrity sha512-jIe7szFE0UqAfUMBSQHxNpE3y0g7PNfJ0IIKFYqf6thw/AGaCSN2GxfIejaKFkqjPdnVi2+KZrTUYclWJCgXrQ==
   dependencies:
     "@aws-cdk/aws-autoscaling" "^1.73.0"
     "@aws-cdk/aws-ec2" "^1.73.0"
     "@aws-cdk/aws-iam" "^1.73.0"
     "@aws-cdk/core" "^1.73.0"
-    cdk-spot-one "^0.6.202"
+    cdk-spot-one "^0.6.204"
 
-cdk-spot-one@^0.6.202:
-  version "0.6.204"
-  resolved "https://registry.yarnpkg.com/cdk-spot-one/-/cdk-spot-one-0.6.204.tgz#a4e1f0cc5832f1b8d5adeb1c41a085d29e805b28"
-  integrity sha512-opPrEx1KhLj7t4Y4+0yBE4LE4JCx4jt9GInUenu/i/nMVmZ9lYR2RthB1Y8sYbt4hf/SHGT7gBRqW1QOodW8YA==
+cdk-spot-one@^0.6.204:
+  version "0.6.205"
+  resolved "https://registry.yarnpkg.com/cdk-spot-one/-/cdk-spot-one-0.6.205.tgz#22c0c8e71eec69cb2256fca836814588d24b5260"
+  integrity sha512-Ss+BN+UrT1pvC7E6miUap9Re0ujzTO3dTMmLQsDnJWmLM1R45kaewJIC1tvYAd4kOP5kGSxvPMiYuARxtMBHMQ==
   dependencies:
     "@aws-cdk/aws-ec2" "^1.77.0"
     "@aws-cdk/aws-iam" "^1.77.0"
